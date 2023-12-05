@@ -1,3 +1,3 @@
 # AdventJS 2023
 
-(https://adventjs.dev/)[AdventJS]
+[https://adventjs.dev/](AdventJS)
