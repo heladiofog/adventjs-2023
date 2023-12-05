@@ -1,6 +1,6 @@
 const manufacture = require('./manufacture');
 
-describe('Test Challenge #3, Gifts Factory', () => {
+describe('Test Challenge #2, Gifts Factory', () => {
   test('Gifts ["tren", "oso"] can be made!', () => {
     const gifts = ["tren", "oso", "pelota"];
     const materials = "tronesa";
