@@ -42,6 +42,7 @@ function decode(message) {
   
   for(let i = 0; i < message.length; i++) {
     const currentChar = message[i];
+    
     if (currentChar === '(') {
       // record open parentheses position
       invertedStartStack.push(i);
@@ -59,6 +60,7 @@ function decode(message) {
     }
     decodedMessage += currentChar;
   }
+  
   return decodedMessage.replaceAll(')', '').replaceAll('(', '');;
 }
 
