@@ -10,28 +10,28 @@ const findFirstRepeated = require('./findFirstRepeated');
 // });
 
 describe('Find the first repeated number or return -1.', () => {
-  test('It should return 3', () => {
+  test('For [2, 1, 3, 5, 3, 2] it should return 3', () => {
     const result = findFirstRepeated(giftIds);
     expect(result).toBe(3);
   });
 
-  test('It should return -1', () => {
+  test('For [1, 2, 3, 4] it should return -1', () => {
     const result = findFirstRepeated(giftIds2);
     expect(result).toBe(-1);
   });
 
-  test('It should return 5', () => {
+  test('For [5, 1, 5, 1] it should return 5', () => {
     const result = findFirstRepeated(giftIds3);
     expect(result).toBe(5);
   });
   
-  test('It should return 8', () => {
+  test('For [5, 1, 8, 7, 4, 8, 5, 1] it should return 8', () => {
     const result = findFirstRepeated(giftIds4);
     expect(result).toBe(8);
   });
   
-  test('It should return -1 when the array is empty.', () => {
-    const result = findFirstRepeated(giftIds4);
-    expect(result).toBe(8);
+  test('It should return -1 when the array is empty ([]).', () => {
+    const result = findFirstRepeated(giftIds5);
+    expect(result).toBe(-1);
   });
 });

@@ -1,4 +1,51 @@
+/**
+ * @param [array] gifts An array of numbers
+ * @returns number An integer value of the first repetaded "gift"
+ */
+// function findFirstRepeated(gifts) {
+//   const giftSet = new Set();
+//   for (let i = 0; i < gifts.length; i++) {
+//     if (giftSet.has(gifts[i])) return gifts[i];
+//     giftSet.add(gifts[i]);
+//   }
+//   return -1;
+// }
+
+/* Array version */
+// function findFirstRepeated(gifts) {
+//   const giftInventory = [];
+//   for (let i = 0; i < gifts.length; i++) {
+//     let gift = gifts[i];
+
+//     if (giftInventory.includes(gift)) {
+//       return gift;
+//     }
+//     giftInventory.push(gift);
+//   }
+//   return -1;
+// }
+
+//  Array and for...of iterator
+//  Winner so far...260
 function findFirstRepeated(gifts) {
+  const giftInventory = [];
+  
+  for (const gift of gifts) {
+    if (giftInventory.includes(gift)) {
+      return gift;
+    }
+    giftInventory.push(gift);
+  }
+  return -1;
+}
+
+/**
+ * @deprecated
+ * @param [array] gifts An array of numbers
+ * @returns number An integer value of the first repetaded "gift"
+ */
+
+function findFirstRepeatedGift(gifts) {
   // Code here
   if (new Set(gifts).size === gifts.length) { // there's no repetition
     return -1;
