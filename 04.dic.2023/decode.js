@@ -1,26 +1,69 @@
-function decode(original, modified) {
-  let difference = "";
-  // holding the position after the loop ends
-  let index = 0;
-  // Check always based on original length
-  for (index = 0; index < original.length; index++) {
-    if (original[index] !== modified[index]) {
-      break;
-    }
-  }
-  // if original is missing a step (includes original empty)
-  if (original.length < modified.length) {
-    difference = modified[index];
-  }
-  // if original has an extra step
-  if (original.length > modified.length) {
-    difference = original[index];
-  }
-  // if there's no modification
-  // then difference stays (empty) ''
+/*function decode(message) {
+  let decodedMessage = "";
+  // a stack for the openning "(" position
+  const invertedStartStack = [];
 
-  return difference;
+  for(let i = 0; i < message.length; i++) {
+    const currentChar = message[i];
+    if (currentChar === '(') {
+      // record open parentheses position
+      invertedStartStack.push(i);
+    } else if (currentChar === ')') {
+      // revert substring and append to decodedMessage
+      let substringStart = invertedStartStack.pop();
+      // get the substring from message to be reversed
+      let invertedSubstring = decodedMessage.substring(substringStart + 1, i);
+      // recreate decodedMessage
+      decodedMessage = 
+        decodedMessage.substring(0, substringStart + 1) + reverseString(invertedSubstring);
+    }
+    decodedMessage += currentChar; // just append the character
+  }
+  // clean "(" and ")" before return the decoded string
+  // console.log(decodedMessage);
+  return decodedMessage.replaceAll(')', '').replaceAll('(', '');;
 }
+// receives a string
+function reverseString(invertedString) {
+  let revertedString = "";
+  for (let index = invertedString.length - 1; index >= 0; index--) {
+    revertedString += invertedString[index];
+  }
+  // console.log(invertedString, revertedString);
+  return revertedString;
+}*/
+
+/* All in one function version */
+
+function decode(message) {
+  let decodedMessage = "";
+  // a stack for the openning "(" position
+  const invertedStartStack = [];
+  
+  for(let i = 0; i < message.length; i++) {
+    const currentChar = message[i];
+    if (currentChar === '(') {
+      // record open parentheses position
+      invertedStartStack.push(i);
+    } else if (currentChar === ')') {
+      // revert substring and append to decodedMessage
+      let substringStart = invertedStartStack.pop();
+      // get the substring from message to be reversed
+      let invertedSubstring = decodedMessage.substring(substringStart + 1, i);
+      let reversedSubstring = invertedSubstring.split("").reverse().join("");
+      // recreate decodedMessage
+      decodedMessage = 
+        decodedMessage.substring(0, substringStart + 1) +
+        // invertedSubstring.split("").reverse().join("")
+        reversedSubstring;
+    }
+    decodedMessage += currentChar;
+  }
+  return decodedMessage.replaceAll(')', '').replaceAll('(', '');;
+}
+
+
+
 /*
 In 🎅 Santa's workshop, some Christmas messages have been written in a peculiar way: the words within the brackets must be read backwards.
 
@@ -36,6 +79,11 @@ console.log(b) // hello world!
 
 const c = decode('sa(u(cla)atn)s')
 console.log(c) // santaclaus
+
+// Example usage created by haf: right result!
+const inputString = 'sa(u(cla)atn)s (olleh) (d(rl)ow) Tezca!';
+const resultString = decode(inputString);
+console.log(resultString);
 
 // Step by step:
 // 1. Reverse the nested -> sa(ualcatn)s
